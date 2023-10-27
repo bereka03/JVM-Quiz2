@@ -1,5 +1,8 @@
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 import javax.xml.crypto.dsig.Transform;
 import javax.xml.parsers.DocumentBuilder;
@@ -12,6 +15,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
+import java.io.IOException;
 
 public class XMLUtils  {
 
@@ -56,5 +60,26 @@ public class XMLUtils  {
         Element lineElement2 = document.createElement("line");
         lineElement2.appendChild(document.createTextNode(line2));
         postalElement.appendChild(lineElement2);
+    }
+
+    public static void parseXML() throws ParserConfigurationException, IOException, SAXException {
+
+        File file = new File("C:/Users/user/IdeaProjects/quiz2/src/a.xml");
+
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+        Document document = documentBuilder.parse(file);
+
+        document.getDocumentElement().normalize();
+
+        NodeList lettersList = document.getElementsByTagName("letter");
+
+        for (int i = 0; i < lettersList.getLength(); i++) {
+            Node item = lettersList.item(i);
+            Element letterElement = (Element) item;
+            System.out.println(letterElement.getElementsByTagName("postal").item(0).getFirstChild().getTextContent());
+            System.out.println(letterElement.getElementsByTagName("postal").item(0).getLastChild().getTextContent());
+            System.out.println(letterElement.getElementsByTagName("reference").item(0).getTextContent());
+        }
     }
 }
