@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pack>
+    <letters>
+        <letter>
+            <postal>
+                <line>Recepient 1</line>
+                <line>Somewhere NSW 2345</line>
+            </postal>
+            <reference>ABC00001</reference>
+        </letter>
+        <letter>
+            <postal>
+                <line>Recepient 2</line>
+                <line>Somewhere NSW 2345</line>
+            </postal><reference>DEF00002</reference>
+        </letter>
+        <letter>
+            <postal>
+                <line>Recepient 3</line>
+                <line>Somewhere NSW 2345</line>
+            </postal>
+            <reference>GHI00003</reference>
+        </letter>
+    </letters>
+</pack>
